@@ -232,7 +232,7 @@ Demonstrar:
 Jefferson Ferreira
 
 - GitHub: [jeffersonferreira-ti](https://github.com/jeffersonferreira-ti)
-- LinkedIn
+- LinkedIn: [Jefferson Ferreira](https://www.linkedin.com/in/jefferson-ferreira-ti)
 
 ---
 
