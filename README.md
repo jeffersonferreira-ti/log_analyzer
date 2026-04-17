@@ -154,6 +154,29 @@ Inclui:
 - drivers de risco
 - correlação entre eventos
 
+Exemplo resumido:
+
+```json
+{
+  "analysis_summary": {
+    "total_score": 91,
+    "classification": "CRITICAL"
+  },
+  "timeline_highlights": [
+    "3x Failed login from 192.168.1.50 between 10:01:22 and 10:01:42"
+  ],
+  "risk_drivers": [
+    "Repeated SSH authentication failures from a single IP suggest possible brute-force activity."
+  ],
+  "correlations": [
+    {
+      "type": "ip_correlation",
+      "description": "IP 192.168.1.50 appears repeatedly in authentication failures and is a likely source of suspicious activity."
+    }
+  ]
+}
+```
+
 ---
 
 ## 🖥️ CLI
@@ -224,6 +247,18 @@ Demonstrar:
 - identificação de padrões operacionais e de segurança
 - correlação de eventos
 - raciocínio investigativo
+
+---
+
+## 🧩 Incident Summary
+
+This analysis indicates a scenario where:
+
+- repeated authentication failures suggest potential brute-force activity
+- recurring application errors indicate service instability
+- a critical system event (reboot) occurred shortly after these issues
+
+Together, these signals point to a **high-risk operational incident with both security and stability concerns**.
 
 ---
 
