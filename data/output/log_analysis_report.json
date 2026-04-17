@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-17T13:58:53.193920+00:00",
+  "generated_at": "2026-04-17T14:53:01.275184+00:00",
   "total_files_loaded": 3,
   "total_entries_parsed": 17,
   "level_counts": {
@@ -83,6 +83,16 @@
         "NOTICE": 0
       }
     }
+  ],
+  "timeline_highlights": [
+    "2026-04-16 09:58:11 ERROR Disk space low on /dev/sda1",
+    "2026-04-16 09:58:45 WARNING Memory usage exceeded 85 percent",
+    "2026-04-16 09:59:10 ERROR DNS resolution timeout for updates.example.com",
+    "3x Database connection failed between 10:01:15 and 10:01:20",
+    "3x Failed login from 192.168.1.50 between 10:01:22 and 10:01:42",
+    "2026-04-16 10:01:40 CRITICAL Unexpected system reboot detected",
+    "2026-04-16 10:02:05 Accepted login from 192.168.1.20",
+    "2026-04-16 10:02:05 WARNING Too many requests from IP 203.0.113.10"
   ],
   "triggered_findings": [
     {
