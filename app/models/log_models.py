@@ -23,6 +23,12 @@ class ParsedLogEntry:
     level: str
     message: str
     ip_address: str | None
+    parser_name: str = "generic"
+    event_source: str | None = None
+    event_id: int | None = None
+    http_method: str | None = None
+    http_path: str | None = None
+    status_code: int | None = None
 
 
 @dataclass(slots=True)

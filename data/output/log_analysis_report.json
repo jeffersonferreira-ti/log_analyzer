@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-04-17T02:46:42.657338+00:00",
+  "generated_at": "2026-04-17T13:15:29.843610+00:00",
   "total_files_loaded": 3,
   "total_entries_parsed": 17,
   "level_counts": {
     "CRITICAL": 1,
     "ERROR": 5,
-    "INFO": 4,
-    "UNKNOWN": 5,
-    "WARNING": 2
+    "INFO": 5,
+    "NOTICE": 1,
+    "WARNING": 5
   },
   "analysis_summary": {
-    "total_score": 91,
+    "total_score": 94,
     "classification": "CRITICAL",
     "summary": "CRITICAL based on 5 triggered finding(s) across authentication, error, and event severity heuristics."
   },
@@ -60,13 +60,13 @@
     },
     {
       "rule_name": "excessive_warning_or_error_volume",
-      "description": "High volume of warning and error events detected: 7 entries.",
+      "description": "High volume of warning and error events detected: 10 entries.",
       "severity": "MEDIUM",
-      "score": 9,
+      "score": 12,
       "evidence": [
-        "2026-04-16 09:58:11 ERROR Disk space low on /dev/sda1",
-        "2026-04-16 09:58:45 WARNING Memory usage exceeded 85 percent",
-        "2026-04-16 09:59:10 ERROR DNS resolution timeout for updates.example.com"
+        "Apr 16 10:01:22 server1 sshd[1452]: Failed password for invalid user admin from 192.168.1.50 port 55210 ssh2",
+        "Apr 16 10:01:30 server1 sshd[1452]: Failed password for invalid user admin from 192.168.1.50 port 55211 ssh2",
+        "Apr 16 10:01:42 server1 sshd[1452]: Failed password for invalid user admin from 192.168.1.50 port 55212 ssh2"
       ]
     }
   ]

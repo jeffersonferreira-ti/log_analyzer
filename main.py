@@ -6,7 +6,7 @@ from pathlib import Path
 
 from app.analyzer.log_analyzer import LogAnalyzer
 from app.ingestor.log_ingestor import LogIngestor
-from app.parser.log_parser import LogParser
+from app.parser.parser_router import ParserRouter
 from app.reporting.report_generator import ReportGenerator
 from config import settings
 
@@ -108,7 +108,7 @@ def main() -> None:
     """Load, parse, analyze, and optionally report on log files."""
     args = parse_args()
     ingestor = LogIngestor()
-    parser = LogParser()
+    parser = ParserRouter()
     analyzer = LogAnalyzer()
     report_generator = ReportGenerator()
 
