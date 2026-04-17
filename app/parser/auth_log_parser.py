@@ -57,7 +57,7 @@ class AuthLogParser(BaseLogParser):
         """Infer a practical auth level from common security actions."""
         lowered = message.lower()
         if "failed password" in lowered or "authentication failure" in lowered:
-            return "WARNING"
+            return "NOTICE"
         if "accepted password" in lowered or "session opened" in lowered:
             return "INFO"
         if process_name == "sudo":
