@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-04-17T02:46:42.854391+00:00",
+  "generated_at": "2026-04-17T14:58:54.542410+00:00",
   "total_files_loaded": 3,
   "total_entries_parsed": 17,
   "level_counts": {
     "CRITICAL": 1,
     "ERROR": 5,
-    "INFO": 4,
-    "UNKNOWN": 5,
+    "INFO": 5,
+    "NOTICE": 4,
     "WARNING": 2
   },
   "analysis_summary": {
@@ -14,6 +14,86 @@
     "classification": "CRITICAL",
     "summary": "CRITICAL based on 5 triggered finding(s) across authentication, error, and event severity heuristics."
   },
+  "top_ips": [
+    {
+      "ip": "192.168.1.50",
+      "count": 3
+    },
+    {
+      "ip": "192.168.1.20",
+      "count": 1
+    },
+    {
+      "ip": "203.0.113.10",
+      "count": 1
+    }
+  ],
+  "top_errors": [
+    {
+      "message": "Database connection failed",
+      "count": 3
+    },
+    {
+      "message": "Disk space low on /dev/sda1",
+      "count": 1
+    },
+    {
+      "message": "DNS resolution timeout for updates.example.com",
+      "count": 1
+    },
+    {
+      "message": "Unexpected system reboot detected",
+      "count": 1
+    }
+  ],
+  "files_summary": [
+    {
+      "file_name": "auth.log",
+      "entries": 5,
+      "levels": {
+        "INFO": 1,
+        "WARNING": 0,
+        "ERROR": 0,
+        "CRITICAL": 0,
+        "UNKNOWN": 0,
+        "NOTICE": 4
+      }
+    },
+    {
+      "file_name": "system.log",
+      "entries": 5,
+      "levels": {
+        "INFO": 1,
+        "WARNING": 1,
+        "ERROR": 2,
+        "CRITICAL": 1,
+        "UNKNOWN": 0,
+        "NOTICE": 0
+      }
+    },
+    {
+      "file_name": "webapp.txt",
+      "entries": 7,
+      "levels": {
+        "INFO": 3,
+        "WARNING": 1,
+        "ERROR": 3,
+        "CRITICAL": 0,
+        "UNKNOWN": 0,
+        "NOTICE": 0
+      }
+    }
+  ],
+  "timeline_highlights": [
+    "2026-04-16 09:58:11 ERROR Disk space low on /dev/sda1",
+    "2026-04-16 09:58:45 WARNING Memory usage exceeded 85 percent",
+    "2026-04-16 09:59:10 ERROR DNS resolution timeout for updates.example.com",
+    "3x Database connection failed between 10:01:15 and 10:01:20",
+    "3x Failed login from 192.168.1.50 between 10:01:22 and 10:01:42",
+    "2026-04-16 10:01:40 CRITICAL Unexpected system reboot detected",
+    "2026-04-16 10:02:05 Accepted login from 192.168.1.20",
+    "2026-04-16 10:02:05 WARNING Too many requests from IP 203.0.113.10"
+  ],
   "triggered_findings": [
     {
       "rule_name": "repeated_failed_logins",
@@ -69,5 +149,12 @@
         "2026-04-16 09:59:10 ERROR DNS resolution timeout for updates.example.com"
       ]
     }
+  ],
+  "risk_drivers": [
+    "A critical system event significantly increased the overall risk level.",
+    "Repeated SSH authentication failures from a single IP suggest possible brute-force activity.",
+    "A single IP showed repeated suspicious behavior across multiple log entries.",
+    "Recurring application errors indicate persistent service instability.",
+    "A high concentration of warning and error events suggests broader operational instability."
   ]
 }

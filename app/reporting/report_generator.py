@@ -16,8 +16,28 @@ class ReportGenerator:
 
     _LEVEL_ORDER = ("INFO", "WARNING", "ERROR", "CRITICAL", "UNKNOWN", "NOTICE")
     _TOP_ITEMS_LIMIT = 5
+    _RISK_DRIVERS_LIMIT = 5
     _TIMELINE_LIMIT = 8
     _TIMELINE_GROUP_GAP_SECONDS = 60
+    _RISK_DRIVER_MESSAGES = {
+        "repeated_failed_logins": (
+            "Repeated SSH authentication failures from a single IP suggest possible "
+            "brute-force activity."
+        ),
+        "suspicious_ip_activity": (
+            "A single IP showed repeated suspicious behavior across multiple log entries."
+        ),
+        "repeated_errors": (
+            "Recurring application errors indicate persistent service instability."
+        ),
+        "critical_events_present": (
+            "A critical system event significantly increased the overall risk level."
+        ),
+        "excessive_warning_or_error_volume": (
+            "A high concentration of warning and error events suggests broader "
+            "operational instability."
+        ),
+    }
 
     def generate_json_report(
         self,
@@ -55,6 +75,7 @@ class ReportGenerator:
                 }
                 for finding in analysis_result.findings
             ],
+            "risk_drivers": self._build_risk_drivers(analysis_result),
         }
 
         report_path.write_text(
@@ -62,6 +83,40 @@ class ReportGenerator:
             encoding="utf-8",
         )
         return report_path
+
+    def _build_risk_drivers(self, analysis_result: AnalysisResult) -> list[str]:
+        """Return concise human-readable drivers for the triggered findings."""
+        drivers: list[str] = []
+        seen_messages: set[str] = set()
+
+        sorted_findings = sorted(
+            analysis_result.findings,
+            key=lambda finding: finding.score,
+            reverse=True,
+        )
+        for finding in sorted_findings:
+            driver = self._build_risk_driver_message(finding)
+            if not driver:
+                continue
+
+            normalized_driver = driver.casefold()
+            if normalized_driver in seen_messages:
+                continue
+
+            seen_messages.add(normalized_driver)
+            drivers.append(driver)
+
+            if len(drivers) >= self._RISK_DRIVERS_LIMIT:
+                break
+
+        return drivers
+
+    def _build_risk_driver_message(self, finding) -> str:
+        """Map one finding to a human-readable risk driver."""
+        return self._RISK_DRIVER_MESSAGES.get(
+            finding.rule_name,
+            finding.description.strip(),
+        )
 
     def _build_top_ips(self, parsed_entries: list[ParsedLogEntry]) -> list[dict[str, int | str]]:
         """Return the most frequent IP addresses found in parsed entries."""
