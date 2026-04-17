@@ -19,13 +19,11 @@ class ReportGenerator:
         total_entries_parsed: int,
         level_counts: Counter[str],
         analysis_result: AnalysisResult,
-        output_dir: str | Path,
+        output_path: str | Path,
     ) -> Path:
         """Write the JSON report to disk and return its path."""
-        target_dir = Path(output_dir)
-        target_dir.mkdir(parents=True, exist_ok=True)
-
-        report_path = target_dir / "log_analysis_report.json"
+        report_path = Path(output_path)
+        report_path.parent.mkdir(parents=True, exist_ok=True)
         report_data = {
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "total_files_loaded": total_files_loaded,
