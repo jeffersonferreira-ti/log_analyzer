@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-17T13:15:29.843610+00:00",
+  "generated_at": "2026-04-17T13:36:57.872365+00:00",
   "total_files_loaded": 3,
   "total_entries_parsed": 17,
   "level_counts": {
@@ -14,6 +14,76 @@
     "classification": "CRITICAL",
     "summary": "CRITICAL based on 5 triggered finding(s) across authentication, error, and event severity heuristics."
   },
+  "top_ips": [
+    {
+      "ip": "192.168.1.50",
+      "count": 3
+    },
+    {
+      "ip": "192.168.1.20",
+      "count": 1
+    },
+    {
+      "ip": "203.0.113.10",
+      "count": 1
+    }
+  ],
+  "top_errors": [
+    {
+      "message": "Database connection failed",
+      "count": 3
+    },
+    {
+      "message": "Disk space low on /dev/sda1",
+      "count": 1
+    },
+    {
+      "message": "DNS resolution timeout for updates.example.com",
+      "count": 1
+    },
+    {
+      "message": "Unexpected system reboot detected",
+      "count": 1
+    }
+  ],
+  "files_summary": [
+    {
+      "file_name": "auth.log",
+      "entries": 5,
+      "levels": {
+        "INFO": 1,
+        "WARNING": 3,
+        "ERROR": 0,
+        "CRITICAL": 0,
+        "UNKNOWN": 0,
+        "NOTICE": 1
+      }
+    },
+    {
+      "file_name": "system.log",
+      "entries": 5,
+      "levels": {
+        "INFO": 1,
+        "WARNING": 1,
+        "ERROR": 2,
+        "CRITICAL": 1,
+        "UNKNOWN": 0,
+        "NOTICE": 0
+      }
+    },
+    {
+      "file_name": "webapp.txt",
+      "entries": 7,
+      "levels": {
+        "INFO": 3,
+        "WARNING": 1,
+        "ERROR": 3,
+        "CRITICAL": 0,
+        "UNKNOWN": 0,
+        "NOTICE": 0
+      }
+    }
+  ],
   "triggered_findings": [
     {
       "rule_name": "repeated_failed_logins",

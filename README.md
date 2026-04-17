@@ -8,7 +8,7 @@
 
 # Log Analyzer
 
-**Ferramenta de analise de logs para suporte, operacoes e seguranca**
+**Ferramenta de análise de logs para suporte, operações e segurança**
 
 *Parse. Detect. Understand.*
 
@@ -18,34 +18,34 @@
 
 ## 🧠 O Problema
 
-Logs sao essenciais, mas dificeis de interpretar rapidamente.
+Logs são uma das principais fontes de diagnóstico em sistemas, mas analisá-los manualmente é lento e ineficiente.
 
 | Problema | Impacto |
 |---|---|
-| Grande volume de logs | Dificil identificar problemas |
-| Falhas repetidas passam despercebidas | Incidentes nao detectados |
-| Atividades suspeitas nao analisadas | Risco de seguranca |
-| Falta de analise estruturada | Tempo alto de troubleshooting |
+| Alto volume de logs | Difícil identificar padrões |
+| Falhas repetidas passam despercebidas | Incidentes não detectados |
+| Atividade suspeita não analisada | Risco de segurança |
+| Falta de estrutura | Troubleshooting demorado |
 
 ---
 
-## 🚀 A Solucao
+## 🚀 A Solução
 
-O **Log Analyzer** automatiza a analise de logs, identificando padroes relevantes como:
+O **Log Analyzer** automatiza a análise de logs, identificando padrões relevantes e transformando dados brutos em **insights acionáveis**.
 
-- falhas repetidas
-- atividade suspeita de IP
-- erros recorrentes
-- eventos criticos
+Ele combina:
 
-E transforma logs brutos em **insights acionaveis**.
+- parsing estruturado
+- detecção de padrões
+- sistema de pontuação de risco
+- classificação final do cenário analisado
 
 ---
 
 ## ⚙️ Como Funciona
 
 ```text
-Logs -> Ingestao -> Parser -> Heuristicas -> Score -> Classificacao -> JSON Report
+Logs → Ingestão → Parser → Heurísticas → Score → Classificação → JSON Report
 ```
 
 ---
@@ -53,20 +53,28 @@ Logs -> Ingestao -> Parser -> Heuristicas -> Score -> Classificacao -> JSON Repo
 ## 🔍 Funcionalidades
 
 ### 📂 Log Ingestion
-- leitura de arquivos `.log` e `.txt`
-- multiplos arquivos simultaneos
+- leitura de `.log` e `.txt`
+- múltiplos arquivos simultâneos
 - tratamento de erros de leitura
 
-### 🧩 Parsing
-- leitura linha a linha
-- tentativa de extracao de:
-  - timestamp
-  - nivel (`INFO`, `ERROR`, etc.)
-  - mensagem
-  - IP address
+### 🧩 Parsing Inteligente
+Suporte a logs reais:
+
+- Linux auth logs (`auth.log`, `secure`)
+- Apache/Nginx logs
+- Windows logs exportados (formato texto)
+- fallback genérico
+
+Extração de:
+
+- timestamp
+- nível (`INFO`, `WARNING`, `ERROR`, etc.)
+- mensagem
+- IP address
 
 ### 🧠 Heuristic Analysis
-Detecta padroes como:
+
+Detecta padrões como:
 
 - `repeated_failed_logins`
 - `repeated_errors`
@@ -75,52 +83,78 @@ Detecta padroes como:
 - `excessive_warning_or_error_volume`
 
 ### 📊 Risk Scoring
-- sistema de pontuacao baseado em heuristicas
-- classificacao final:
-  - `NORMAL`
-  - `ATTENTION`
-  - `SUSPICIOUS`
-  - `CRITICAL`
 
-### 🧾 Output
-- resumo no terminal
-- relatorio estruturado em JSON
-- CLI configuravel
+Classificação baseada em score:
+
+| Score | Classificação |
+|---|---|
+| 0-19 | NORMAL |
+| 20-49 | ATTENTION |
+| 50-79 | SUSPICIOUS |
+| 80+ | CRITICAL |
 
 ---
 
-## 📈 Exemplo de Execucao
+## 🧪 Caso de Uso Real
 
-```bash
-python main.py
-```
+### 📌 Cenário
+
+Análise de um servidor com:
+
+- múltiplas falhas de login SSH
+- erro recorrente de aplicação
+- evento crítico de sistema
+- atividade suspeita de IP
+
+### 📂 Logs analisados
+
+- `auth.log`
+- `system.log`
+- `webapp.txt`
+
+### 🔎 Resultado da análise
 
 ```text
-Log Analyzer is ready.
 Loaded 3 log files (0 failed)
 Parsed 17 log entries
 
 Levels:
 CRITICAL: 1
 ERROR: 5
-INFO: 4
-UNKNOWN: 5
-WARNING: 2
+INFO: 5
+NOTICE: 1
+WARNING: 5
 
-## Analysis Summary
-
-Total Score: 91
+📊 Análise final
+Total Score: 94
 Classification: CRITICAL
-Summary: CRITICAL based on 5 triggered finding(s) across authentication, error, and event severity heuristics.
 
-Triggered Findings:
-* repeated_failed_logins [score=22]
-* repeated_errors [score=14]
-* suspicious_ip_activity [score=18]
-* critical_events_present [score=28]
-* excessive_warning_or_error_volume [score=9]
+🚨 Findings detectados
+repeated failed logins
+suspicious IP activity
+repeated errors
+critical system event
+high volume of warnings/errors
+```
 
-Report path: data/output/log_analysis_report.json
+### 🧠 Interpretação
+
+O sistema identificou:
+
+- tentativa de brute force (SSH)
+- comportamento suspeito de IP
+- erro recorrente de aplicação
+- evento crítico de sistema (reboot)
+- padrão de instabilidade geral
+
+➡️ Conclusão: cenário de risco elevado → `CRITICAL`
+
+---
+
+## 📈 Exemplo de Execução
+
+```bash
+python main.py
 ```
 
 ### 🧾 JSON Report
@@ -129,14 +163,14 @@ Gerado automaticamente em:
 
 `data/output/log_analysis_report.json`
 
-Exemplo:
+Exemplo simplificado:
 
 ```json
 {
   "total_files_loaded": 3,
   "total_entries_parsed": 17,
   "analysis_summary": {
-    "total_score": 91,
+    "total_score": 94,
     "classification": "CRITICAL"
   }
 }
@@ -144,13 +178,13 @@ Exemplo:
 
 ### 🖥️ Uso via CLI
 
-Execucao padrao:
+Execução padrão:
 
 ```bash
 python main.py
 ```
 
-Diretorio customizado:
+Diretório customizado:
 
 ```bash
 python main.py --source ./data/samples
@@ -162,28 +196,17 @@ Apenas resumo:
 python main.py --summary-only
 ```
 
-Sem gerar relatorio:
+Sem relatório:
 
 ```bash
 python main.py --no-report
 ```
 
-Caminho customizado de saida:
+Caminho customizado:
 
 ```bash
 python main.py --output ./reports/analysis.json
 ```
-
----
-
-## 🧠 Analise Inteligente
-
-O sistema interpreta padroes de log para identificar:
-
-- tentativa de brute force
-- erros recorrentes de sistema
-- falhas de aplicacao
-- eventos criticos de infraestrutura
 
 ---
 
@@ -207,56 +230,42 @@ log_analyzer/
 
 ---
 
-## ▶️ Como Executar
+## ⚠️ Limitações
 
-Pre-requisitos:
-
-- Python 3.10+
-- dependencias em `requirements.txt`
-
-```bash
-pip install -r requirements.txt
-python main.py
-```
-
----
-
-## ⚠️ Limitacoes
-
-- nao substitui SIEMs profissionais
-- nao analisa todos os formatos de log
-- heuristicas simples (MVP)
-- sem correlacao avancada entre eventos
+- não substitui SIEMs profissionais
+- heurísticas simples (MVP)
+- sem correlação avançada entre eventos
+- parsing limitado a formatos suportados
 
 ---
 
 ## 🗺️ Roadmap
 
-| Versao | Foco | Status |
+| Versão | Foco | Status |
 |---|---|---|
-| v1.0 | Ingestao + Parsing + Heuristicas | ✅ Concluido |
-| v1.1 | Ajuste de scoring | ✅ Concluido |
-| v1.2 | JSON report + CLI | ✅ Concluido |
-| v2.0 | Integracao com logs de sistema | 📋 Planejado |
-| v2.1 | Monitoramento continuo | 💡 Futuro |
+| v1.0 | Ingestão + Parsing + Heurísticas | ✅ |
+| v1.1 | Ajuste de scoring | ✅ |
+| v1.2 | JSON + CLI | ✅ |
+| v1.3 | Suporte a logs reais | ✅ |
+| v2.0 | Enriquecimento de análise (IPs, mensagens) | 📋 |
+| v2.1 | Monitoramento contínuo | 💡 |
 
 ---
 
 ## 🎯 Objetivo do Projeto
 
-Projeto desenvolvido para demonstrar:
+Demonstrar:
 
-- analise de logs em ambiente real
-- identificacao de padroes de erro
-- deteccao de atividade suspeita
-- automacao de troubleshooting
-- pensamento voltado a operacoes e seguranca
+- análise de logs em ambiente real
+- detecção de padrões operacionais e de segurança
+- automação de troubleshooting
+- raciocínio baseado em evidência
 
 ---
 
 ## 👨‍💻 Sobre o Desenvolvedor
 
-Desenvolvido por Jefferson Ferreira.
+Desenvolvido por Jefferson Ferreira
 
 ---
 

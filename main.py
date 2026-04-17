@@ -132,6 +132,7 @@ def main() -> None:
             report_path = report_generator.generate_json_report(
                 total_files_loaded=len(log_files),
                 total_entries_parsed=len(parsed_entries),
+                parsed_entries=parsed_entries,
                 level_counts=level_counts,
                 analysis_result=analysis_result,
                 output_path=args.output,
