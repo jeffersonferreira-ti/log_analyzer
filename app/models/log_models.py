@@ -1,4 +1,4 @@
-"""Data models used during log ingestion and parsing."""
+"""Data models used during ingestion, parsing, and analysis."""
 
 from dataclasses import dataclass
 from datetime import datetime
@@ -23,3 +23,24 @@ class ParsedLogEntry:
     level: str
     message: str
     ip_address: str | None
+
+
+@dataclass(slots=True)
+class AnalysisFinding:
+    """Represents a triggered heuristic finding."""
+
+    rule_name: str
+    description: str
+    severity: str
+    score: int
+    evidence: list[str]
+
+
+@dataclass(slots=True)
+class AnalysisResult:
+    """Represents the aggregate analysis output for one run."""
+
+    total_score: int
+    classification: str
+    summary: str
+    findings: list[AnalysisFinding]
