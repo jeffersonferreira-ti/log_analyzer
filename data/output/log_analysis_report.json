@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-17T15:24:23.534149+00:00",
+  "generated_at": "2026-04-17T15:39:32.266014+00:00",
   "total_files_loaded": 3,
   "total_entries_parsed": 17,
   "level_counts": {
@@ -96,7 +96,7 @@
   ],
   "correlations": [
     {
-      "type": "ip_activity",
+      "type": "ip_correlation",
       "description": "IP 192.168.1.50 appears repeatedly in authentication failures and is a likely source of suspicious activity."
     },
     {
@@ -104,11 +104,11 @@
       "description": "Authentication failures in auth.log occurred close to a critical system event in system.log."
     },
     {
-      "type": "app_system_correlation",
+      "type": "application_system_correlation",
       "description": "Repeated database errors in webapp.txt occurred close to a system issue in system.log."
     },
     {
-      "type": "temporal_sequence",
+      "type": "temporal_correlation",
       "description": "Repeated database errors and failed logins occurred shortly before a critical system event."
     }
   ],

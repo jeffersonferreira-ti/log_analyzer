@@ -155,7 +155,7 @@ class ReportGenerator:
 
             correlations.append(
                 {
-                    "type": "ip_activity",
+                    "type": "ip_correlation",
                     "description": description,
                 }
             )
@@ -273,7 +273,7 @@ class ReportGenerator:
                 )
                 return [
                     {
-                        "type": "temporal_sequence",
+                        "type": "temporal_correlation",
                         "description": description,
                     }
                 ]
@@ -285,7 +285,7 @@ class ReportGenerator:
                 )
                 return [
                     {
-                        "type": "temporal_sequence",
+                        "type": "temporal_correlation",
                         "description": description,
                     }
                 ]
@@ -687,7 +687,7 @@ class ReportGenerator:
             any(keyword in combined_sources for keyword in ("webapp", "app", "database"))
             and "system" in combined_sources
         ):
-            return "app_system_correlation"
+            return "application_system_correlation"
 
         return "cross_file_pattern"
 
