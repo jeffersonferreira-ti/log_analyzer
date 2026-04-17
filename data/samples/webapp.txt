@@ -1,0 +1,7 @@
+[2026-04-16 10:00:01] INFO Request started GET /login
+[2026-04-16 10:00:02] INFO Request completed 200 /login
+[2026-04-16 10:01:15] ERROR Database connection failed
+[2026-04-16 10:01:18] ERROR Database connection failed
+[2026-04-16 10:01:20] ERROR Database connection failed
+[2026-04-16 10:02:05] WARNING Too many requests from IP 203.0.113.10
+[2026-04-16 10:02:40] INFO Request completed 500 /checkout

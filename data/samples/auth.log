@@ -1,0 +1,5 @@
+Apr 16 10:01:22 server1 sshd[1452]: Failed password for invalid user admin from 192.168.1.50 port 55210 ssh2
+Apr 16 10:01:30 server1 sshd[1452]: Failed password for invalid user admin from 192.168.1.50 port 55211 ssh2
+Apr 16 10:01:42 server1 sshd[1452]: Failed password for invalid user admin from 192.168.1.50 port 55212 ssh2
+Apr 16 10:02:05 server1 sshd[1452]: Accepted password for jefferson from 192.168.1.20 port 55400 ssh2
+Apr 16 10:03:11 server1 sudo: jefferson : TTY=pts/0 ; PWD=/home/jefferson ; USER=root ; COMMAND=/usr/bin/systemctl restart nginx

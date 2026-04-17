@@ -1,0 +1,5 @@
+2026-04-16 09:58:11 ERROR Disk space low on /dev/sda1
+2026-04-16 09:58:45 WARNING Memory usage exceeded 85 percent
+2026-04-16 09:59:10 ERROR DNS resolution timeout for updates.example.com
+2026-04-16 10:00:02 INFO Scheduled backup started
+2026-04-16 10:01:40 CRITICAL Unexpected system reboot detected
